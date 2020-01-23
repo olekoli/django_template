@@ -17,7 +17,6 @@ class Common(Configuration):
         "django.contrib.staticfiles",
         "django.contrib.sites",
         "rest_framework",
-        "graphene_django",
         # Authentication
         "rest_framework.authtoken",
         "allauth",
@@ -177,4 +176,3 @@ class Common(Configuration):
         ),
     }
 
-    # GRAPHENE = {"SCHEMA": "django_template.schema.schema"}

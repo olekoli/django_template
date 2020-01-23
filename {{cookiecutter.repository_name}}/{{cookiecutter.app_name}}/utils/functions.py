@@ -30,26 +30,3 @@ def update_instance(instance: Model, args: Dict, exception: List = ["id"]) -> Mo
         ]
     instance.save()
     return instance
-
-
-def dict_to_camel_case(input_dict: Dict) -> Dict:
-    """
-    Converts all keys in the dictionary from snake_case to camelCase to simplify making graphql queries
-    :param input_dict: Any valid dictionary
-    :return: Returns a dictionary with all of the keys in camelCase
-    """
-
-    def variable_to_camel_case(variable: str) -> str:
-        parts = variable.split("_")
-        return "".join(
-            list(map(lambda x: x.capitalize() if parts.index(x) != 0 else x, parts))
-        )
-
-    new_dict = {}
-
-    for k, v in input_dict.items():
-        if isinstance(v, dict):
-            v = dict_to_camel_case(v)
-        new_dict[variable_to_camel_case(k)] = v
-
-    return new_dict
